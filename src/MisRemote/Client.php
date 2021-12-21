@@ -102,7 +102,7 @@ class Client extends BaseClient
         string $provinceCode,
         string $cityCode = null,
         string $districtCode = null,
-        array $schoolCodes = [],
+        array $schoolCodes = []
     ): Response {
         return $this->post('mis-remote/ucp-device-service/query-online-device', [
             'startDate' => $startAt->format('U') * 1000,
