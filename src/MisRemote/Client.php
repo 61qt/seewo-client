@@ -22,7 +22,7 @@ class Client extends BaseClient
      */
     public function getSchoolsByProvince(string $code): Response
     {
-        return $this->post('mis-remote/ucp-school-service/query-school-by-province', [
+        return $this->post('/mis-remote/ucp-school-service/query-school-by-province', [
             'provinceCode' => $code,
         ]);
     }
@@ -36,7 +36,7 @@ class Client extends BaseClient
      */
     public function getSchoolsByCity(string $code): Response
     {
-        return $this->post('mis-remote/ucp-school-service/query-school-by-city', [
+        return $this->post('/mis-remote/ucp-school-service/query-school-by-city', [
             'cityCode' => $code,
         ]);
     }
@@ -50,7 +50,7 @@ class Client extends BaseClient
      */
     public function getSchoolsByDistrict(string $code): Response
     {
-        return $this->post('mis-remote/ucp-school-service/query-school-by-district', [
+        return $this->post('/mis-remote/ucp-school-service/query-school-by-district', [
             'districtCode' => $code,
         ]);
     }
@@ -64,7 +64,7 @@ class Client extends BaseClient
      */
     public function getSchools(array $codes): Response
     {
-        return $this->post('mis-remote/ucp-school-service/query-school', [
+        return $this->post('/mis-remote/ucp-school-service/query-school', [
             'schoolCodes' => $codes,
         ]);
     }
@@ -78,7 +78,7 @@ class Client extends BaseClient
      */
     public function getSchoolDevices(array $codes): Response
     {
-        return $this->post('mis-remote/ucp-device-service/query-device-manage', [
+        return $this->post('/mis-remote/ucp-device-service/query-device-manage', [
             'schoolCodes' => $codes,
         ]);
     }
@@ -104,7 +104,7 @@ class Client extends BaseClient
         string $districtCode = null,
         array $schoolCodes = []
     ): Response {
-        return $this->post('mis-remote/ucp-device-service/query-online-device', [
+        return $this->post('/mis-remote/ucp-device-service/query-online-device', [
             'startDate' => $startAt->format('U') * 1000,
             'endDate'   => $endAt->format('U') * 1000,
             'queryDto'  => array_filter([
@@ -133,7 +133,7 @@ class Client extends BaseClient
         array $schoolCodes,
         int $top = 50
     ): Response {
-        return $this->post('mis-remote/ucp-software-service/query-top-software-by-district', [
+        return $this->post('/mis-remote/ucp-software-service/query-top-software-by-district', [
             'startDate'   => $startAt->format('U') * 1000,
             'endDate'     => $endAt->format('U') * 1000,
             'schoolCodes' => $schoolCodes,
@@ -158,7 +158,7 @@ class Client extends BaseClient
         string $districtCode,
         int $top = 50
     ): Response {
-        return $this->post('mis-remote/ucp-software-service/query-top-software-by-district', [
+        return $this->post('/mis-remote/ucp-software-service/query-top-software-by-district', [
             'startDate'    => $startAt->format('U') * 1000,
             'endDate'      => $endAt->format('U') * 1000,
             'districtCode' => $districtCode,
@@ -183,7 +183,7 @@ class Client extends BaseClient
         string $cityCode,
         int $top = 50
     ): Response {
-        return $this->post('mis-remote/ucp-software-service/query-top-software-by-city', [
+        return $this->post('/mis-remote/ucp-software-service/query-top-software-by-city', [
             'startDate' => $startAt->format('U') * 1000,
             'endDate'   => $endAt->format('U') * 1000,
             'cityCode'  => $cityCode,
@@ -208,7 +208,7 @@ class Client extends BaseClient
         string $provinceCode,
         int $top = 50
     ): Response {
-        return $this->post('mis-remote/ucp-software-service/query-top-software-by-province', [
+        return $this->post('/mis-remote/ucp-software-service/query-top-software-by-province', [
             'startDate'    => $startAt->format('U') * 1000,
             'endDate'      => $endAt->format('U') * 1000,
             'provinceCode' => $provinceCode,
@@ -225,7 +225,7 @@ class Client extends BaseClient
      */
     public function getSchoolBindDevices(array $codes): Response
     {
-        return $this->post('mis-remote/ucp-device-service/query-device-bind', [
+        return $this->post('/mis-remote/ucp-device-service/query-device-bind', [
             'schoolCodes' => $codes,
         ]);
     }
@@ -239,7 +239,7 @@ class Client extends BaseClient
      */
     public function getSchoolDeviceBaseInfo(array $codes): Response
     {
-        return $this->post('mis-remote/ucp-device-service/query-device-base-info', [
+        return $this->post('/mis-remote/ucp-device-service/query-device-base-info', [
             'schoolCodes' => $codes,
         ]);
     }
@@ -253,7 +253,7 @@ class Client extends BaseClient
      */
     public function getSchoolDeviceRuntimeInfo(array $codes): Response
     {
-        return $this->post('mis-remote/ucp-device-service/query-run-attribute-by-school-code', [
+        return $this->post('/mis-remote/ucp-device-service/query-run-attribute-by-school-code', [
             'schoolCodes' => $codes,
         ]);
     }
@@ -269,7 +269,7 @@ class Client extends BaseClient
      */
     public function getSchoolDeviceUsage(array $codes, DateTime $startAt, DateTime $endAt): Response
     {
-        return $this->post('mis-remote/ucp-device-service/query-device-usage-by-school-code', [
+        return $this->post('/mis-remote/ucp-device-service/query-device-usage-by-school-code', [
             'schoolCodes' => $codes,
             'startDate'   => $startAt->format('U') * 1000,
             'endDate'     => $endAt->format('U') * 1000,
@@ -287,7 +287,7 @@ class Client extends BaseClient
      */
     public function getSchoolDeviceStatistic(array $codes, DateTime $startAt, DateTime $endAt): Response
     {
-        return $this->post('mis-remote/ucp-device-service/query-device-statistic', [
+        return $this->post('/mis-remote/ucp-device-service/query-device-statistic', [
             'schoolCodes' => $codes,
             'startDate'   => $startAt->format('U') * 1000,
             'endDate'     => $endAt->format('U') * 1000,
@@ -306,7 +306,7 @@ class Client extends BaseClient
      */
     public function getSchoolSoftwareUseInfo(array $codes, string $name, DateTime $startAt, DateTime $endAt): Response
     {
-        return $this->post('mis-remote/ucp-software-service/query-software-use', [
+        return $this->post('/mis-remote/ucp-software-service/query-software-use', [
             'schoolCodes'  => $codes,
             'softwareName' => $name,
             'startDate'    => $startAt->format('U') * 1000,
