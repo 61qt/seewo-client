@@ -133,7 +133,7 @@ class Client extends BaseClient
         array $schoolCodes,
         int $top = 50
     ): Response {
-        return $this->post('/mis-remote/ucp-software-service/query-top-software-by-district', [
+        return $this->post('/mis-remote/ucp-software-service/query-top-software-by-school-code', [
             'startDate'   => $startAt->format('U') * 1000,
             'endDate'     => $endAt->format('U') * 1000,
             'schoolCodes' => $schoolCodes,
@@ -311,6 +311,52 @@ class Client extends BaseClient
             'softwareName' => $name,
             'startDate'    => $startAt->format('U') * 1000,
             'endDate'      => $endAt->format('U') * 1000,
+        ]);
+    }
+
+    /**
+     * 查询设备健康值数据
+     *
+     * http://open.seewo.com/#/service/1315/doc/1943
+     * @param array<string> $codes
+     * @param DateTime $startAt
+     * @param DateTime $endAt
+     * @param int $pageNum
+     * @param int $pageSize
+     *
+     * @return Response
+     */
+    public function getSchoolDeviceHealth(array $codes, DateTime $startAt, DateTime $endAt,int $pageNum, int $pageSize): Response
+    {
+        return $this->post('/mis-remote/ucp-device-service/query-device-health', [
+            'schoolCodes'  => $codes,
+            'startDate'    => $startAt->format('U') * 1000,
+            'endDate'      => $endAt->format('U') * 1000,
+            'pageNum'      => $pageNum,
+            'pageSize'     => $pageSize
+        ]);
+    }
+
+    /**
+     * 查询弹窗拦截数据
+     *
+     * http://open.seewo.com/#/service/1315/doc/1944
+     * @param array<string> $codes
+     * @param DateTime $startAt
+     * @param DateTime $endAt
+     * @param int $pageNum
+     * @param int $pageSize
+     *
+     * @return Response
+     */
+    public function getSchoolDevicePopupIntercept(array $codes, DateTime $startAt, DateTime $endAt,int $pageNum, int $pageSize): Response
+    {
+        return $this->post('/mis-remote/ucp-device-service/query-popup-intercept', [
+            'schoolCodes'  => $codes,
+            'startDate'    => $startAt->format('U') * 1000,
+            'endDate'      => $endAt->format('U') * 1000,
+            'pageNum'      => $pageNum,
+            'pageSize'     => $pageSize
         ]);
     }
 }
