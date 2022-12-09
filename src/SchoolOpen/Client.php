@@ -36,7 +36,7 @@ class Client extends BaseClient
      */
     public function getAreaRankingStatistics(int $areaId): Response
     {
-        return $this->post('/school-open/area-ranking/statistics', [
+        return $this->get('/school-open/area-ranking/statistics', [
             'areaId'   => $areaId,
             "ticketId" => $this->ticketId,
         ]);
